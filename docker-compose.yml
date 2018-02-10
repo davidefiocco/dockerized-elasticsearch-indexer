@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  elasticsearch:
+    build: elasticsearch/
+    ports:
+      - 9200:9200
+      - 9300:9300
+    container_name: elasticsearch
+
+  indexer:
+    build: indexer/
+    depends_on:
+      - elasticsearch
+    container_name: indexer
