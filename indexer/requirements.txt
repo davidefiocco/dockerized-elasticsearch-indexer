@@ -1,1 +1,1 @@
-elasticsearch==6.1.1
+elasticsearch==7.9.1
