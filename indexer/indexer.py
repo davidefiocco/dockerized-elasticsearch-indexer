@@ -4,7 +4,9 @@ from elasticsearch.helpers import bulk
 import time
 time.sleep(30)   # follow Mihai Todor's suggestion on https://stackoverflow.com/questions/48711455/create-dockerized-elasticsearch-index-using-a-python-script-running-in-docker/48712414#48712414
 
-es = Elasticsearch(hosts=[{"host":'elasticsearch'}]) # what should I put here?
+es = Elasticsearch(hosts=[{"host":'elasticsearch'}])
+
+data = [{'id': 1, 'foo': 'bar'}, {'id': 2, 'foo': 'spam'}]
 
 actions = [
     {
@@ -13,7 +15,7 @@ actions = [
     '_id' : str(item['id']),
     '_source' : item,
     }
-for item in [{'id': 1, 'foo': 'bar'}, {'id': 2, 'foo': 'spam'}]
+for item in data
 ]
 
 # create index
