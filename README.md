@@ -8,3 +8,7 @@ Run with
 docker-compose build
 docker-compose up
 ```
+
+## Troubleshooting
+
+Check https://github.com/docker-library/elasticsearch/issues/111 in case of troubles in the logs with `vm.max_map_count`.
