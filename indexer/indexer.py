@@ -8,8 +8,9 @@ es = Elasticsearch(hosts=[{"host":'elasticsearch'}], retry_on_timeout = True)
     
 for _ in range(100):
     try:
+        # make sure the cluster is available
         es.cluster.health(wait_for_status='yellow')
-    except ConnectionError:
+    except:
         time.sleep(2)
 
 data = pd.read_json("data.jsonl", lines=True)
