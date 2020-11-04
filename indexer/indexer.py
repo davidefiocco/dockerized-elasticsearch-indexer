@@ -1,5 +1,6 @@
 from elasticsearch import Elasticsearch
 from elasticsearch.helpers import bulk
+from elasticsearch.exceptions import ConnectionError
 import pandas as pd
 import time
 
@@ -10,7 +11,7 @@ for _ in range(100):
     try:
         # make sure the cluster is available
         es.cluster.health(wait_for_status='yellow')
-    except:
+    except ConnectionError:
         time.sleep(2)
 
 data = pd.read_json("data.jsonl", lines=True)
